@@ -8,12 +8,12 @@ fetch('https://www.fishwatch.gov/api/species')
         //successfull fetch return as json
         return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
         //data now contains the json
         for (var i in data) fisharray.push([i, data[i]]);
         console.log(fisharray);
         for (var i in fisharray)
-        fishlist.innerHTML += `<p>${fisharray[i][1]['Color']}</p>`;
+            fishlist.innerHTML += `<p>${fisharray[i][1]['Color']}</p>`;
     })
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -24,15 +24,15 @@ form.addEventListener('submit', function (e) {
 
 function fetchSomeFishes(fish) {
     fetch(`https://www.fishwatch.gov/api/species/${fish}`)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-        const imageUrl = data[0]['Image Gallery'][0]['src'];
-        log.innerHTML = `<img src=${imageUrl}>`;
-    })
-    .catch(function (error){
-        console.log(error);
-    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            const imageUrl = data[0]['Image Gallery'][0]['src'];
+            log.innerHTML = `<img src=${imageUrl}>`;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 }
